@@ -10,6 +10,9 @@ import com.example.demo.types.Author;
 import com.example.demo.types.RegistAuthorResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,8 +24,15 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     private final RegistAuthorFactory registAuthorFactory;
 
     @Override
-    public Author getAuthorById(Id id) {
-        return authorFactory.create(authorMapper.getAuthorById(id.getValue()));
+    public List<Author> getAuthorList()
+    {
+        return authorFactory.create( authorMapper.getAuthorList() );
+    }
+
+    @Override
+    public Author getAuthorById( Id id )
+    {
+        return authorFactory.create( authorMapper.getAuthorById( id.getValue() ) );
     }
 
     @Override
